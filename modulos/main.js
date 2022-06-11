@@ -42,3 +42,25 @@ emitter.on('mensaje_logger', function(){
 //Registrar evento
 
 emitter.emit('mensaje_logger', {id: 1, url:'htpp://prueba.com'})
+
+
+////////////////////////////////////////////////////////
+
+const http = require('http')
+const server = http.createServer((req, res) => {
+    if (req.url === '/'){
+        res.write('Hola mundo')
+        res.end()
+    }
+
+    if (req.url === '/api/productos')
+    res.write(JSON.stringify(['mouse', 'teclado', 'parlante']))
+    res.end()
+})
+
+server.on('connection', (puerto) => {
+    console.log('Nueva conexion');
+})
+
+server.listen(3000)
+console.log('servisor escuchando en el puerto 3000');
