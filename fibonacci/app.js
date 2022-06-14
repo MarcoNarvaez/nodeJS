@@ -1,10 +1,11 @@
-let fibo1 = 1
-let fibo2 = 1
+const serie = require('./serie')
 
-console.log(`${fibo1}`);
+let argv = process.argv
+let valor = argv[2].split('=')[1]
+//console.log(valor);
 
-for (let i = 2; i<=7; i++) {
-    console.log(`${fibo2}`);
-    fibo2 = fibo1 + fibo2
-    fibo1 = fibo2 - fibo1
-}
+let cantidad = valor
+
+serie.crearSerie(cantidad)
+    .then(mensaje => console.log(mensaje))
+    .catch(mensaje => console.log(mensaje))
